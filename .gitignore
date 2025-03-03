@@ -6,3 +6,19 @@
 
 # build artifacts
 *.bin
+*.o
+*.obj
+*.exe
+*.out
+*.elf
+*.iso
+*.img
+
+# NASM intermediate files
+*.lst
+*.map
+
+# build directories
+build/
+dist/
+output/
