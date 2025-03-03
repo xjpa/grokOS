@@ -1,1 +1,8 @@
+# mac shit
 .DS_Store
+
+# CLion IDE
+.idea/
+
+# build artifacts
+*.bin
