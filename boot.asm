@@ -1,28 +1,39 @@
-ORG 0x7c00
+ORG 0
+
 BITS 16
 
 start:
-    mov si, message
-    call print
-    jmp $
+cli
+mov ax, 0x7c0
+mov ds, ax
+mov es, ax
+mov ax, 0x00
+mov ss, ax
+sti
+mov si, message
+call print
+jmp $
 
 print:
-    mov bx, 0
+mov bx, 0
+
 .loop:
-    lodsb
-    cmp al,  0
-    je .done
-    call print_char
-    jmp .loop
+lodsb
+cmp al, 0
+je .done
+call print_char
+jmp .loop
+
 .done:
-    ret
+ret
+
 print_char:
-    mov ah, 0Eh
+mov ah, 0eh
+int 0x10
 
-    int 0x10
-    ret
+ret
 
-message: db `it is time to BUILD`, 0
+message: db `TEST TEST`, 0
 
-times 510-($-$$)   db 0;
+times 510-($-$$) db 0
 dw 0xAA55
